@@ -15,14 +15,14 @@ import com.saibende.saibende.model.TransactionModel;
 import com.saibende.saibende.service.TransactionService;
 
 @RestController
-@RequestMapping("/api/transaction")
+@RequestMapping("/api")
 @CrossOrigin
 public class TransactionController {
 
     @Autowired
     private TransactionService service;
 
-    @GetMapping("/alltransaction")
+    @GetMapping("/transaction")
     public ResponseEntity<List<TransactionModel>> getCategory() {
         try {
             List<TransactionModel> transactions = service.getAllTransaction();

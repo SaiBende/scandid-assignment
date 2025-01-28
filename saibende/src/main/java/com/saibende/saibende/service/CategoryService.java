@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.saibende.saibende.model.CategoryModel;
-import com.saibende.saibende.repo.CategoryRepo;
+import com.saibende.saibende.repo.CategoryRepository;
 
 @Service
 public class CategoryService {
 
     @Autowired
-    private CategoryRepo repo;
+    private CategoryRepository repo;
 
    public List<CategoryModel> getAllCategories() {
         return repo.findAll();

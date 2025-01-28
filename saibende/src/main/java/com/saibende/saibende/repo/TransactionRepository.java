@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.saibende.saibende.model.TransactionModel;
 
 @Repository
-public interface TransactionRepo extends JpaRepository<TransactionModel, Integer>{
+public interface TransactionRepository extends JpaRepository<TransactionModel, Integer>{
     
+   
 }

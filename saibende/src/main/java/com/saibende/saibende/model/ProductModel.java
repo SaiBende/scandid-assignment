@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,29 +14,23 @@ import lombok.NoArgsConstructor;
 @Data 
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "product")
 public class ProductModel {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-generate primary key
-    private int product_id;
 
-    @Column(nullable = false)
-    private String product_name;
-
-    private String product_description;
-    private String brand;
-    private double product_price;
-    private int quantity;
-
-    @Column(name = "transaction_date")
-    private Date transactionDate;
+    @Id 
+    private String productId;
+    
+    @Column(name = "product_name")
+    private String title;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false) // Foreign key to CategoryModel
-    @JsonBackReference
+    @JoinColumn(name ="category_name",nullable = false)
+
     private CategoryModel category;
 
-    private boolean available;
+    @Column(name = "product_price" , nullable = false)
+    private Double price;
 
-    private String product_image;
+    
 
 }

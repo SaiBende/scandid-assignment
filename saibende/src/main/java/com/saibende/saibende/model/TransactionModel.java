@@ -2,12 +2,11 @@ package com.saibende.saibende.model;
 
 
 
-import java.util.Date;
+
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -19,37 +18,47 @@ import lombok.NoArgsConstructor;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+
+
 public class TransactionModel {
-    
-    
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private int transaction_id;
-    
-        @ManyToOne // Establish a relationship with ProductModel
-        @JoinColumn(name = "product_id", nullable = false) // Foreign key column
-        private ProductModel product;
-    
-        private int quantity;
-    
-        @Column(name = "transaction_date")
-        private Date transactionDate;
-    
- 
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    // private int transaction_id;
+    @Id
+    @Column(name="Txid",nullable = false)
+    private String txid;
 
-    // @ManyToOne
-    // @JoinColumn(name = "product_id", nullable = false) // Foreign key to ProductModel
-    // private ProductModel product;
+    
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private ProductModel product;
 
-    // private int quantity;
+    
+    @Column(name = "store_name", nullable = false)
+    private String store;
 
-    // @Column(name = "transaction_date")
-    // private Date transactionDate;
+    @Column(nullable = false)
+    private Double sales;
 
+    @Column(nullable = false)
+    private Double commission;
+
+    @Column(nullable = false)
+    private LocalDateTime orderDate;
+
+    @Column(nullable = false)
+    private String status;
+
+    @Column(nullable = false)
+    private LocalDateTime addedAt;
+
+    @Column(nullable = false)
+    private LocalDateTime lastUpdated;
+
+    @Column(nullable = false)
+    private String pid; 
+
+    
+    @Column(nullable = false)
+    private String affid1;
    
 
 

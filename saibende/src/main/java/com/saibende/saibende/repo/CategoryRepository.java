@@ -7,11 +7,13 @@ import com.saibende.saibende.model.CategoryModel;
 
 
 @Repository
-public interface CategoryRepo extends JpaRepository<CategoryModel, Integer>{
 
-    CategoryModel findByCategoryName(String categoryName);
+public interface CategoryRepository extends JpaRepository<CategoryModel, Integer>{
 
+    //CategoryModel findByCategoryName(String );
 
+    CategoryModel findById(int categoryId);
+    
 }
     
 

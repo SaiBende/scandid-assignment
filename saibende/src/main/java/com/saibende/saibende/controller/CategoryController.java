@@ -15,7 +15,7 @@ import com.saibende.saibende.model.CategoryModel;
 import com.saibende.saibende.service.CategoryService;
 
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("/api")
 @CrossOrigin
 
 
@@ -24,7 +24,7 @@ public class CategoryController {
    private CategoryService service;
     
 
-    @GetMapping("/allcategories")
+    @GetMapping("/category")
     public ResponseEntity<List<CategoryModel>> getCategory() {
         try {
             List<CategoryModel> categories = service.getAllCategories();

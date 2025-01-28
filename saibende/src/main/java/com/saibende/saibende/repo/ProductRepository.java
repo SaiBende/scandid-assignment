@@ -7,7 +7,9 @@ import org.springframework.stereotype.Repository;
 import com.saibende.saibende.model.ProductModel;
 
 @Repository
-public interface ProductRepo extends JpaRepository<ProductModel, Integer> {
+public interface ProductRepository extends JpaRepository<ProductModel, String> {
+
+    ProductModel findByProductId(String productId);
 
     
 }
