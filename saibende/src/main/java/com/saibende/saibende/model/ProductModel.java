@@ -1,8 +1,6 @@
 package com.saibende.saibende.model;
 
-import java.sql.Date;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,8 +22,7 @@ public class ProductModel {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name ="category_name",nullable = false)
-
+    @JoinColumn(name ="category_id",nullable = false)
     private CategoryModel category;
 
     @Column(name = "product_price" , nullable = false)

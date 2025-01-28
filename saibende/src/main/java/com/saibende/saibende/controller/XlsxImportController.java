@@ -15,7 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.saibende.saibende.service.ImportService;
 
 @RestController
-@RequestMapping("/api/csv")
+@RequestMapping("/api/xlsx")
 @CrossOrigin
 public class XlsxImportController {
 

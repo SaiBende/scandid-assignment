@@ -35,6 +35,21 @@ function App() {
       <div className="w-full p-4 bg-gray-100 rounded-lg shadow-md">
         <RefreshButton />
       </div>
+
+      <div className="flex gap-4 mt-6">{components.map((component, index) => (
+          <button key={index} onClick={() => setCurrentComponent(index)} className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+            {component.name}
+          </button>))}
+      </div>
+      <p className="mt-2 text-gray-500">
+        Current View:{"  "}
+        <span className="font-semibold text-gray-800">
+          {components[currentComponent].name}
+        </span>
+      </p>
+      
+     
+    
       <div className="w-full p-4 bg-white rounded-lg shadow-lg">
         {components[currentComponent].component}
       </div>

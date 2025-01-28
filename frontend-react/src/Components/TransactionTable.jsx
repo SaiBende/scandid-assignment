@@ -12,7 +12,7 @@ const TransactionTable = () => {
   useEffect(() => {
     const fetchTransactions = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/api/transaction/alltransaction"); // Replace with your API URL
+        const response = await axios.get("http://localhost:8080/api/transaction"); 
         setTransactions(response.data);
         setLoading(false);
       } catch  {
@@ -34,43 +34,44 @@ const TransactionTable = () => {
 
   return (<>
 
-  {transactions.length > 0 && (<div className="relative overflow-x-auto">
-        <h2>Transaction Table</h2>
-      <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+  {transactions.length > 0 && (
+    <div className="relative max-w-screen overflow-x-auto">
+    <table className="min-w-full table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" className="px-6 py-3">Transaction ID</th>
-            <th scope="col" className="px-6 py-3">Product Name</th>
-            <th scope="col" className="px-6 py-3">Quantity</th>
-            <th scope="col" className="px-6 py-3">Price</th>
-            <th scope="col" className="px-6 py-3">Transaction Date</th>
-          </tr>
+            <tr>
+                <th scope="col" className="px-6 py-3">Transaction ID</th>
+                <th scope="col" className="px-6 py-3">Product Name</th>
+                <th scope="col" className="px-6 py-3">Category</th>
+                <th scope="col" className="px-6 py-3">Store</th>
+                <th scope="col" className="px-6 py-3">Price</th>
+                <th scope="col" className="px-6 py-3">Sales</th>
+                <th scope="col" className="px-6 py-3">Commission</th>
+                <th scope="col" className="px-6 py-3">Order Date</th>
+                <th scope="col" className="px-6 py-3">Status</th>
+            </tr>
         </thead>
         <tbody>
-          {transactions.map((transaction) => (
-            <tr
-              key={transaction.transaction_id}
-              className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
-            >
-              <th
-                scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-              >
-                {transaction.transaction_id}
-              </th>
-              <td className="px-6 py-4">{transaction.product.product_name}</td>
-              <td className="px-6 py-4">{transaction.quantity}</td>
-              <td className="px-6 py-4">
-                ${transaction.product.product_price.toFixed(2)}
-              </td>
-              <td className="px-6 py-4">
-                {new Date(transaction.transactionDate).toLocaleDateString()}
-              </td>
-            </tr>
-          ))}
+            {transactions.map((item) => (
+                <tr
+                    key={item.txid}
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
+                >
+                    <td className="px-6 py-4">{item.txid}</td>
+                    <td className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {item.product.title}
+                    </td>
+                    <td className="px-6 py-4">{item.product.category.categoryName}</td>
+                    <td className="px-6 py-4">{item.store}</td>
+                    <td className="px-6 py-4">${item.product.price.toFixed(2)}</td>
+                    <td className="px-6 py-4">${item.sales.toFixed(2)}</td>
+                    <td className="px-6 py-4">${item.commission.toFixed(2)}</td>
+                    <td className="px-6 py-4">{new Date(item.orderDate).toLocaleDateString()}</td>
+                    <td className="px-6 py-4">{item.status}</td>
+                </tr>
+            ))}
         </tbody>
-      </table>
-    </div>)}
+    </table>
+</div>)}
     {transactions.length === 0 && (<p>No transactions found.</p>)}
     
   </>
