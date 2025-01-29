@@ -13,9 +13,13 @@ import com.saibende.saibende.repo.ProductRepository;
 public class ProductService {
     @Autowired
     private ProductRepository repo;
+    
     public List<ProductModel> getAllProducts() {
             return repo.findAll();
     }
-
+     
+    public ProductModel getProductById(String productId) {
+        return repo.findByProductId(productId);
+    }
    
 }

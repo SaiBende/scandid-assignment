@@ -28,7 +28,7 @@ public class TransactionModel {
 
     
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "product_id", nullable = false )
     private ProductModel product;
 
     

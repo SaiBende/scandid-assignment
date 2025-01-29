@@ -22,7 +22,7 @@ public class ProductModel {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name ="category_id",nullable = false)
+    @JoinColumn(name ="category_id",nullable = false, referencedColumnName = "category_id")
     private CategoryModel category;
 
     @Column(name = "product_price" , nullable = false)
