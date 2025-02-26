@@ -23,7 +23,7 @@ const Upload = () => {
     formData.append("file", file);
 
     try {
-      const response = await axios.post("http://localhost:8080/api/csv/import", formData, {
+      const response = await axios.post("http://localhost:8080/api/xlsx/import", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
